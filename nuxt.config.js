@@ -39,19 +39,24 @@ export default {
   axios: {},
 
   i18n: {
-    locales: ['en', 'pt_BR', ],
+    locales: ['en', 'pt_BR'],
     defaultLocale: 'en',
     vueI18n: {
       fallbackLocale: 'en',
-      messages: {
-        en: {
-          welcome: 'Welcome'
-        },
-        pt_BR: {
-          welcome: 'Bem Vindo'
-        },
-      }
-    }
+      defaultLocale: 'en'
+    },
+    langDir: 'lang/',
+    lazy: true,
+    locales: [
+      {
+        code: 'en',
+        file: 'en.js'
+      },
+      {
+        code: 'pt_BR',
+        file: 'pt_BR.js'
+      },
+    ],
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
