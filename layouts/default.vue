@@ -17,6 +17,10 @@ html {
   box-sizing: border-box;
 }
 
+* {
+  font-family: 'TUITypeLight';
+}
+
 body {
   margin: 0;
 }
