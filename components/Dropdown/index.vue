@@ -74,12 +74,14 @@ export default {
 <style lang="scss" scoped>
 .dropdown {
   position: relative;
+  height: 40px;
   border: 1px solid #092a5e;
   border-radius: 3px;
   padding: 10px 16px;
   color: #092a5e;
   font-size: 18px;
   font-weight: bold;
+  box-sizing: border-box;
   cursor: pointer;
 
   &.isOpen {
