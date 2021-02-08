@@ -1,12 +1,15 @@
-import axios from 'axios'
+import Amadeus from 'amadeus'
 
-// create an axios instance with for Amadeus API requests
-export const HTTP_AMADEUS = axios.create({
-  baseURL: 'https://test.api.amadeus.com/v2',
-  headers: {
-    Authorization: 'Bearer 4tUC8DuNxf4dW8PGXR8jVCiG1WKE',
-  },
+// TODO - Move keys to another place
+const amadeus = new Amadeus({
+  clientId: '5r4Nm0rL1kw8QlcAPc9FfI36W4931Adx',
+  clientSecret: '4fFK7UEgKat8PNEX',
 })
 
-export const getHotelList = (query) =>
-  HTTP_AMADEUS.get(`/shopping/hotel-offers?${query}`).then((resp) => resp.data)
+export const getHotelList = (data) =>
+  amadeus.shopping.hotelOffers
+    .get({
+      ...data,
+      pageLimit: 10,
+    })
+    .then((resp) => resp.data)
