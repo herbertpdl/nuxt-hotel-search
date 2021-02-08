@@ -1,11 +1,13 @@
 <template>
   <div>
-    <LoadingSpinner v-if="false" />
+    <LoadingSpinner v-if="isLoading" />
     <Nuxt />
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import LoadingSpinner from '../components/LoadingSpinner'
 
 export default {
@@ -13,20 +15,10 @@ export default {
   components: {
     LoadingSpinner,
   },
+  computed: {
+    ...mapGetters(['isLoading']),
+  },
 }
 </script>
 
-<style>
-* {
-  font-family: 'TUITypeLight';
-}
-
-body {
-  margin: 0;
-}
-
-h1,
-p {
-  margin-top: 0;
-}
-</style>
+<style></style>

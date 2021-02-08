@@ -2,15 +2,22 @@
   <header class="header">
     <div class="container">
       <Card :title="$t('header.cardTitle')">
-        <Dropdown v-model="selectedCountry" :options="options" />
+        <Dropdown v-model="searchData.cityCode" :options="options" />
 
-        <input type="number" v-model="adults" />
+        <label>Adultos</label>
+        <input v-model="searchData.adults" type="number" min="1" />
+
+        <button @click="findHotels">BUSCAR</button>
       </Card>
     </div>
   </header>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
+import { getHotelList } from '../../services'
+
 import Card from '../Card'
 import Dropdown from '../Dropdown'
 
@@ -22,15 +29,23 @@ export default {
   },
   data() {
     return {
-      selectedCountry: null,
-      adults: 0,
-      options: [
-        this.$t('destinationOptions.portugal'),
-        this.$t('destinationOptions.spain'),
-        this.$t('destinationOptions.italy'),
-        this.$t('destinationOptions.brazil'),
-      ],
+      searchData: {
+        cityCode: null,
+        adults: 0,
+      },
+      options: ['CWB', 'NYC', 'LAS'],
     }
+  },
+  methods: {
+    ...mapMutations(['setLoading']),
+    findHotels() {
+      this.setLoading(true)
+      getHotelList(this.searchData).then((resp) => {
+        console.log(resp)
+        this.setLoading(false)
+      })
+      // TODO: Add error handling
+    },
   },
 }
 </script>
