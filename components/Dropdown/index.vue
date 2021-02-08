@@ -7,6 +7,12 @@
   >
     <span> {{ value || placeholder }} </span>
 
+    <img
+      src="../../assets/images/caret-down-solid.svg"
+      alt="dropdown caret arrow"
+      class="dropdown__arrow"
+    />
+
     <div class="dropdown__options">
       <ul>
         <li
@@ -86,11 +92,23 @@ export default {
 
   &.isOpen {
     .dropdown__options {
-      max-height: 200px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      opacity: 1;
-      overflow: initial;
+      &::before {
+        display: block;
+      }
+
+      ul {
+        max-height: 200px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        opacity: 1;
+        overflow: auto;
+      }
     }
+  }
+
+  &__arrow {
+    position: absolute;
+    right: 16px;
+    width: 10px;
   }
 
   &__options {
@@ -98,26 +116,26 @@ export default {
     top: 56px;
     left: 0;
     width: 100%;
-    max-height: 0px;
     border-radius: 3px;
     padding: 0;
     background: #ffffff;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-    opacity: 0;
-    transition: 0.3s;
 
     ul {
       position: relative;
+      max-height: 0px;
       margin: 0;
       padding: 0;
       z-index: 1;
+      opacity: 0;
+      overflow: hidden;
+      transition: 0.3s;
     }
 
     &:before {
       content: '';
       position: absolute;
-      display: block;
+      display: none;
       top: -8px;
       left: 8px;
       width: 16px;
