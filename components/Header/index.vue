@@ -5,7 +5,8 @@
         <Dropdown v-model="searchData.cityCode" :options="options" />
 
         <label>Adultos</label>
-        <input v-model="searchData.adults" type="number" min="1" />
+
+        <NumberStepper v-model="searchData.adults" :min="1" :max="7" />
 
         <button @click="findHotels">BUSCAR</button>
       </Card>
@@ -20,12 +21,14 @@ import { getHotelList } from '../../services'
 
 import Card from '../Card'
 import Dropdown from '../Dropdown'
+import NumberStepper from '../NumberStepper'
 
 export default {
   name: 'Header',
   components: {
     Card,
     Dropdown,
+    NumberStepper,
   },
   data() {
     return {
@@ -33,15 +36,16 @@ export default {
         cityCode: null,
         adults: 0,
       },
-      options: ['CWB', 'NYC', 'LAS'],
+      options: ['NCE', 'MIA', 'LON', 'SYD', 'NYC', 'BKK'],
     }
   },
   methods: {
-    ...mapMutations(['setLoading']),
+    ...mapMutations(['setLoading', 'setHotelsList']),
     findHotels() {
       this.setLoading(true)
       getHotelList(this.searchData).then((resp) => {
         console.log(resp)
+        this.setHotelsList(resp)
         this.setLoading(false)
       })
       // TODO: Add error handling

@@ -9,4 +9,7 @@ export default {
   header: {
     cardTitle: 'Find your perfect stay!',
   },
+  results: {
+    title: 'Search Results',
+  },
 }

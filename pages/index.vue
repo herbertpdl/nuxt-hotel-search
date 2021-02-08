@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header />
     <div>
       <h1 class="title">{{ $t('welcome') }}</h1>
       <nuxt-link :to="switchLocalePath('en')">English</nuxt-link>
@@ -10,13 +9,8 @@
 </template>
 
 <script>
-import Header from '../components/Header'
-
 export default {
   name: 'Index',
-  components: {
-    Header,
-  },
 }
 </script>
 
