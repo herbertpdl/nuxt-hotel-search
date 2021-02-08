@@ -85,7 +85,9 @@ export default {
   &.isOpen {
     .dropdown__options {
       max-height: 200px;
-      overflow: auto;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      opacity: 1;
+      overflow: initial;
     }
   }
 
@@ -95,12 +97,12 @@ export default {
     left: 0;
     width: 100%;
     max-height: 0px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 3px;
     padding: 0;
     background: #ffffff;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
     overflow: hidden;
+    opacity: 0;
     transition: 0.3s;
 
     ul {
@@ -113,15 +115,15 @@ export default {
     &:before {
       content: '';
       position: absolute;
+      display: block;
       top: -8px;
       left: 8px;
+      width: 16px;
+      height: 16px;
       border: 1px solid rgba(0, 0, 0, 0.05);
       border-bottom-color: transparent;
       border-right-color: transparent;
       background: #ffffff;
-      display: block;
-      width: 16px;
-      height: 16px;
       transform: rotate(45deg);
       z-index: 0;
     }

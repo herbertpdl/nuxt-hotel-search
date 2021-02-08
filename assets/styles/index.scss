@@ -5,6 +5,19 @@
   font-style: normal;
 }
 
+* {
+  font-family: 'TUITypeLight';
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+p {
+  margin-top: 0;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
