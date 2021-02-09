@@ -12,4 +12,7 @@ export default {
   results: {
     title: 'Search Results',
   },
+  hotelCard: {
+    weather: 'Weather',
+  },
 }

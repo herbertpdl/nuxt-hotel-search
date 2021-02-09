@@ -17,7 +17,11 @@
 <script>
 import { mapMutations } from 'vuex'
 
-import { getHotelList } from '../../services'
+import {
+  getHotelList,
+  getLocationKey,
+  getCurrentConditions,
+} from '../../services'
 
 import Card from '../Card'
 import Dropdown from '../Dropdown'
@@ -40,15 +44,39 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['setLoading', 'setHotelsList']),
+    ...mapMutations(['setLoading', 'setHotelsList', 'setWeatherData']),
     findHotels() {
       this.setLoading(true)
       getHotelList(this.searchData).then((resp) => {
-        console.log(resp)
         this.setHotelsList(resp)
         this.setLoading(false)
+
+        if (resp.length > 0) {
+          // Get location key based on postal code
+          getLocationKey(
+            resp[0].hotel.address.postalCode,
+            this.returnLanguageCode()
+          ).then((resp) => {
+            // Get conditions based on location key
+            getCurrentConditions(
+              resp[0].Key,
+              this.returnLanguageCode()
+            ).then((resp) => this.setWeatherData(resp[0]))
+          })
+        }
+
+        /* If is not in results page, redirect
+          NOTE: This validation consider that exist only
+          one route with "results" in it's path
+        */
+        if (!this.$route.path.includes('results')) {
+          this.$router.push({ name: `results___${this.returnLanguageCode()}` })
+        }
       })
       // TODO: Add error handling
+    },
+    returnLanguageCode() {
+      return this.$i18n.localeProperties.code
     },
   },
 }

@@ -1,17 +1,18 @@
 <template>
   <div class="hotel-card">
     <Card hoverable>
-      <img
-        src="http://uat.multimediarepository.testing.amadeus.com/cmr/retrieve/hotel/A15115741A8747538ECDBB2AA76B7DE9"
-        alt="Hotel Image"
-        class="hotel-card__image"
-      />
+      <img :src="hotelImage" alt="Hotel Image" class="hotel-card__image" />
 
       <div class="hotel-card__content">
         <h2>{{ hotelData.hotel.name }}</h2>
-        <p>$ {{ hotelData.offers[0].price.total }}</p>
+        <p class="hotel-card__price">$ {{ hotelData.offers[0].price.total }}</p>
 
-        <p>WEATHER</p>
+        <p>{{ $t('hotelCard.weather') }}</p>
+        <span>{{ weatherData.WeatherText }}</span>
+        <div style="display: flex">
+          <span>{{ weatherData.Temperature.Metric.Value }}</span
+          ><small>c</small>
+        </div>
       </div>
     </Card>
   </div>
@@ -31,6 +32,21 @@ export default {
       default: () => ({}),
       required: true,
     },
+    weatherData: {
+      type: Object,
+      default: () => ({}),
+      required: true,
+    },
+  },
+  computed: {
+    // If hotel has no image, return placeholder image
+    hotelImage() {
+      if (this.hotelData.hotel.media) {
+        return this.hotelData.hotel.media[0].uri
+      }
+
+      return 'https://via.placeholder.com/266'
+    },
   },
 }
 </script>
@@ -43,7 +59,7 @@ export default {
   .card {
     display: flex;
     align-items: flex-start;
-    width: 750px;
+    width: 550px;
     height: 250px;
     overflow: hidden;
   }
@@ -54,8 +70,16 @@ export default {
     margin: -8px 0 -8px -8px;
   }
 
+  &__price {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
   &__content {
-    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 260px;
     margin-left: 30px;
 
     h2 {

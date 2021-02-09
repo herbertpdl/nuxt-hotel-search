@@ -39,22 +39,17 @@ export default {
   axios: {},
 
   i18n: {
-    locales: ['en', 'pt_BR'],
-    defaultLocale: 'en',
-    vueI18n: {
-      fallbackLocale: 'en',
-      defaultLocale: 'en'
-    },
+    defaultLocale: 'en-us',
     langDir: 'lang/',
     lazy: true,
     locales: [
       {
-        code: 'en',
-        file: 'en.js'
+        code: 'en-us',
+        file: 'en.js',
       },
       {
-        code: 'pt_BR',
-        file: 'pt_BR.js'
+        code: 'pt-BR',
+        file: 'pt_BR.js',
       },
     ],
   },

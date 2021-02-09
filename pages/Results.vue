@@ -8,6 +8,7 @@
           v-for="(hotel, index) in hotelsList"
           :key="index"
           :hotel-data="hotel"
+          :weather-data="weatherData"
         />
       </div>
     </div>
@@ -20,12 +21,18 @@ import { mapGetters } from 'vuex'
 import HotelCard from '../components/HotelCard'
 
 export default {
+  nuxtI18n: {
+    paths: {
+      'en-us': '/results',
+      'pt-BR': '/resultados',
+    },
+  },
   name: 'Results',
   components: {
     HotelCard,
   },
   computed: {
-    ...mapGetters(['hotelsList']),
+    ...mapGetters(['hotelsList', 'weatherData']),
   },
 }
 </script>
@@ -33,5 +40,11 @@ export default {
 <style lang="scss" scoped>
 .results {
   padding: 24px 0;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 }
 </style>
