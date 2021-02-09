@@ -37,5 +37,9 @@ export default {
       margin-right: 4px;
     }
   }
+
+  a {
+    height: fit-content;
+  }
 }
 </style>

@@ -8,8 +8,15 @@
         <p class="hotel-card__price">$ {{ hotelData.offers[0].price.total }}</p>
 
         <p>{{ $t('hotelCard.weather') }}</p>
-        <span>{{ weatherData.WeatherText }}</span>
-        <div style="display: flex">
+
+        <div class="hotel-card__weather">
+          <img
+            :src="`https://www.accuweather.com/images/weathericons/${weatherData.WeatherIcon}.svg`"
+            alt="weather icon"
+          />
+          <span>{{ weatherData.WeatherText }}</span>
+        </div>
+        <div v-if="weatherData.Temperature" class="hotel-card__temperature">
           <span>{{ weatherData.Temperature.Metric.Value }}</span
           ><small>c</small>
         </div>
@@ -73,6 +80,19 @@ export default {
   &__price {
     font-size: 24px;
     font-weight: bold;
+  }
+
+  &__weather {
+    display: flex;
+
+    img {
+      width: 20px;
+      margin-right: 4px;
+    }
+  }
+
+  &__temperature {
+    display: flex;
   }
 
   &__content {

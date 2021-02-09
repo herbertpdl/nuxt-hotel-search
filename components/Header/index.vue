@@ -1,5 +1,6 @@
 <template>
   <header class="header">
+    <div class="header__blurred-background"></div>
     <div class="container">
       <Card :title="$t('header.cardTitle')">
         <Dropdown v-model="searchData.cityCode" :options="options" />
@@ -8,6 +9,7 @@
 
         <NumberStepper v-model="searchData.adults" :min="1" :max="7" />
 
+        <Button label="Buscar" />
         <button @click="findHotels">BUSCAR</button>
       </Card>
 
@@ -26,6 +28,7 @@ import {
 } from '../../services'
 
 import Card from '../Card'
+import Button from '../Button'
 import Dropdown from '../Dropdown'
 import NumberStepper from '../NumberStepper'
 import LanguageSwitcher from '../LanguageSwitcher'
@@ -34,6 +37,7 @@ export default {
   name: 'Header',
   components: {
     Card,
+    Button,
     Dropdown,
     NumberStepper,
     LanguageSwitcher,
@@ -93,10 +97,25 @@ export default {
 }
 
 .header {
+  position: relative;
   width: 100%;
   height: 300px;
   padding: 16px 0;
-  background-color: #1e4785;
+  overflow: hidden;
+
+  &__blurred-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/images/background-beach-hills.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 0px -420px;
+    filter: blur(3px);
+    z-index: -1;
+  }
 
   .card {
     width: 380px;
