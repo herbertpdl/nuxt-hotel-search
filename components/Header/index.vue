@@ -10,6 +10,8 @@
 
         <button @click="findHotels">BUSCAR</button>
       </Card>
+
+      <LanguageSwitcher />
     </div>
   </header>
 </template>
@@ -26,6 +28,7 @@ import {
 import Card from '../Card'
 import Dropdown from '../Dropdown'
 import NumberStepper from '../NumberStepper'
+import LanguageSwitcher from '../LanguageSwitcher'
 
 export default {
   name: 'Header',
@@ -33,6 +36,7 @@ export default {
     Card,
     Dropdown,
     NumberStepper,
+    LanguageSwitcher,
   },
   data() {
     return {
@@ -83,6 +87,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .header {
   width: 100%;
   height: 300px;
