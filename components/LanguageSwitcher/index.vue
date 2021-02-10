@@ -1,6 +1,6 @@
 <template>
   <div class="language-switcher">
-    <nuxt-link :to="switchLocalePath('en-us')">
+    <nuxt-link :to="switchLocalePath('en-us')" :title="$t('lang.english')">
       <img
         class="language-switcher__image"
         src="../../assets/images/united-states.svg"
@@ -8,7 +8,7 @@
       />
     </nuxt-link>
 
-    <nuxt-link :to="switchLocalePath('pt-BR')">
+    <nuxt-link :to="switchLocalePath('pt-BR')" :title="$t('lang.portuguese')">
       <img
         class="language-switcher__image"
         src="../../assets/images/brazil.svg"

@@ -17,6 +17,11 @@ export const getHotelList = (data) =>
     })
     .then((resp) => resp.data)
 
+export const getHotelOffer = (id) =>
+  amadeus.shopping.hotelOffersByHotel
+    .get({ hotelId: id })
+    .then((resp) => resp.data)
+
 export const getLocationKey = (city, lang) =>
   axios
     .get(

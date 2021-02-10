@@ -8,11 +8,17 @@ export default {
   },
   header: {
     cardTitle: 'Find your perfect stay!',
+    search: 'Search',
+    adults: 'Adults',
   },
   results: {
     title: 'Search Results',
   },
   hotelCard: {
     weather: 'Weather',
+  },
+  lang: {
+    english: 'English',
+    portuguese: 'Portuguese',
   },
 }

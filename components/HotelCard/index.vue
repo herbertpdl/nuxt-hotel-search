@@ -11,6 +11,7 @@
 
         <div class="hotel-card__weather">
           <img
+            v-if="weatherData.WeatherIcon"
             :src="`https://www.accuweather.com/images/weathericons/${weatherData.WeatherIcon}.svg`"
             alt="weather icon"
           />

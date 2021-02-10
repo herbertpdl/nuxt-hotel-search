@@ -5,12 +5,11 @@
       <Card :title="$t('header.cardTitle')">
         <Dropdown v-model="searchData.cityCode" :options="options" />
 
-        <label>Adultos</label>
+        <label>{{ $t('header.adults') }}</label>
 
         <NumberStepper v-model="searchData.adults" :min="1" :max="7" />
 
-        <Button label="Buscar" />
-        <button @click="findHotels">BUSCAR</button>
+        <Button :label="$t('header.search')" @click="findHotels" />
       </Card>
 
       <LanguageSwitcher />
@@ -118,8 +117,16 @@ export default {
   }
 
   .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     width: 380px;
     padding: 8px 16px 16px 16px;
+  }
+
+  .button {
+    align-self: flex-end;
   }
 
   .dropdown {
