@@ -4,12 +4,13 @@
       <h3>{{ $t('results.title') }}</h3>
 
       <div class="results__list">
-        <HotelCard
-          v-for="(hotel, index) in hotelsList"
+        <NuxtLink
+          v-for="(hotelData, index) in hotelsList"
           :key="index"
-          :hotel-data="hotel"
-          :weather-data="weatherData"
-        />
+          :to="`hotel/${hotelData.hotel.hotelId}`"
+        >
+          <HotelCard :hotel-data="hotelData" :weather-data="weatherData" />
+        </NuxtLink>
       </div>
     </div>
   </div>

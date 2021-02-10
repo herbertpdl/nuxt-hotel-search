@@ -1,7 +1,9 @@
 <template>
-  <div class="hotel-card">
+  <div class="hotel-card" @click="$emit('click')">
     <Card hoverable>
-      <img :src="hotelImage" alt="Hotel Image" class="hotel-card__image" />
+      <div class="hotel-card__image">
+        <img :src="hotelImage" alt="Hotel Image" />
+      </div>
 
       <div class="hotel-card__content">
         <h2>{{ hotelData.hotel.name }}</h2>
@@ -21,6 +23,8 @@
           <span>{{ weatherData.Temperature.Metric.Value }}</span
           ><small>c</small>
         </div>
+
+        <Button :label="$t('hotelCard.view')" />
       </div>
     </Card>
   </div>
@@ -28,11 +32,13 @@
 
 <script>
 import Card from '../Card'
+import Button from '../Button'
 
 export default {
   name: 'HotelCard',
   components: {
     Card,
+    Button,
   },
   props: {
     hotelData: {
@@ -64,6 +70,12 @@ export default {
   margin-bottom: 20px;
   cursor: pointer;
 
+  &:hover {
+    .hotel-card__image img {
+      transform: scale(1.05, 1.05);
+    }
+  }
+
   .card {
     display: flex;
     align-items: flex-start;
@@ -76,6 +88,12 @@ export default {
     height: 266px;
     width: 266px;
     margin: -8px 0 -8px -8px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      transition: 0.3s;
+    }
   }
 
   &__price {
@@ -94,6 +112,7 @@ export default {
 
   &__temperature {
     display: flex;
+    margin-bottom: 16px;
   }
 
   &__content {

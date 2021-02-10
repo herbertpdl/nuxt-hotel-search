@@ -103,12 +103,17 @@ export default {
         overflow: auto;
       }
     }
+
+    .dropdown__arrow {
+      transform: rotate(180deg);
+    }
   }
 
   &__arrow {
     position: absolute;
     right: 16px;
     width: 10px;
+    transition: 0.3s;
   }
 
   &__options {

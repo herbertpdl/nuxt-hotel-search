@@ -16,9 +16,13 @@ export default {
   },
   hotelCard: {
     weather: 'Weather',
+    view: 'View details',
   },
   lang: {
     english: 'English',
     portuguese: 'Portuguese',
+  },
+  hotel: {
+    availableRooms: 'Available rooms',
   },
 }

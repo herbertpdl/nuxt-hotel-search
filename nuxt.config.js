@@ -40,6 +40,7 @@ export default {
 
   i18n: {
     defaultLocale: 'en-us',
+    strategy: 'prefix',
     langDir: 'lang/',
     lazy: true,
     locales: [
