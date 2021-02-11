@@ -13,6 +13,6 @@ if (config.dev) {
 }
 
 // Listen the server
-app.listen(port).then(() => {
+app.listen(port, '0.0.0.0').then(() => {
   console.log(`Server is listening on port: ${port}`)
 })
