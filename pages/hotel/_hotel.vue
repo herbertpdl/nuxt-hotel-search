@@ -24,7 +24,7 @@
               </span>
             </div>
 
-            <h3>
+            <h3 v-if="hotelData.hotel.description">
               {{ hotelData.hotel.description.text }}
             </h3>
           </Card>
@@ -61,7 +61,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: this.hotelData?.hotel?.description.text,
+          content: this.hotelData?.hotel?.description?.text,
         },
       ],
     }

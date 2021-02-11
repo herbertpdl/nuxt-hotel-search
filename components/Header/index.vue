@@ -77,13 +77,21 @@ export default {
           one route with "results" in it's path
         */
         if (!this.$route.path.includes('results')) {
-          this.$router.push({ name: `results___${this.returnLanguageCode()}` })
+          this.$router.push(this.returnResultsPageUrl())
         }
       })
       // TODO: Add error handling
     },
     returnLanguageCode() {
       return this.$i18n.localeProperties.code
+    },
+    // Return results page URL based on selected language
+    returnResultsPageUrl() {
+      if (this.$i18n.localeProperties.code === 'en-us') {
+        return '/en-us/results'
+      }
+
+      return '/pt-BR/resultados'
     },
   },
 }
