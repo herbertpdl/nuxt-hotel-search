@@ -24,4 +24,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss">
+.default-layout {
+  min-height: 100vh;
+}
+</style>

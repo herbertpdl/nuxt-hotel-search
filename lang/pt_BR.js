@@ -25,4 +25,8 @@ export default {
   hotel: {
     availableRooms: 'Quartos disponíveis',
   },
+  resultsFilter: {
+    name: 'Nome',
+    value: 'Valor',
+  },
 }

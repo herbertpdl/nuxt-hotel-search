@@ -3,6 +3,8 @@
     <div class="container">
       <h3>{{ $t('results.title') }}</h3>
 
+      <ResultsFilter />
+
       <div class="results__list">
         <NuxtLink
           v-for="(hotelData, index) in hotelsList"
@@ -20,6 +22,7 @@
 import { mapGetters } from 'vuex'
 
 import HotelCard from '../components/HotelCard'
+import ResultsFilter from '../components/ResultsFilter'
 
 export default {
   nuxtI18n: {
@@ -31,6 +34,7 @@ export default {
   name: 'Results',
   components: {
     HotelCard,
+    ResultsFilter,
   },
   computed: {
     ...mapGetters(['hotelsList', 'weatherData']),

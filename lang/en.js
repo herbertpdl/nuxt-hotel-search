@@ -25,4 +25,8 @@ export default {
   hotel: {
     availableRooms: 'Available rooms',
   },
+  resultsFilter: {
+    name: 'Name',
+    value: 'Value',
+  },
 }

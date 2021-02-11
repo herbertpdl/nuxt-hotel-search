@@ -22,7 +22,9 @@
           :class="{ selected: option === value }"
           @click="handleValue(option)"
         >
-          {{ option }}
+          <slot name="options" :option="option">
+            {{ option }}
+          </slot>
         </li>
       </ul>
     </div>
