@@ -25,13 +25,13 @@ export const getHotelOffer = (id) =>
 export const getLocationKey = (city, lang) =>
   axios
     .get(
-      `http://dataservice.accuweather.com/locations/v1/postalcodes/search?apikey=${accuweatherKey}&q=${city}&language=${lang}`
+      `https://dataservice.accuweather.com/locations/v1/postalcodes/search?apikey=${accuweatherKey}&q=${city}&language=${lang}`
     )
     .then((resp) => resp.data)
 
 export const getCurrentConditions = (locationKey, lang) =>
   axios
     .get(
-      `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${accuweatherKey}&language=${lang}`
+      `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${accuweatherKey}&language=${lang}`
     )
     .then((resp) => resp.data)
