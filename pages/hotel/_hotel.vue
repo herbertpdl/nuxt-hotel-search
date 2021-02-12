@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <section class="container">
     <div class="hotel">
       <template v-if="hotelData">
         <div class="hotel__name">
@@ -15,7 +15,7 @@
               class="hotel__image"
             />
 
-            <div class="hotel_amenities">
+            <div class="hotel__amenities">
               <span
                 v-for="(amenitie, index) in hotelData.hotel.amenities"
                 :key="index"
@@ -31,7 +31,7 @@
         </div>
       </template>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -44,6 +44,7 @@ export default {
   components: {
     Card,
   },
+  // Get hotel data before render the page
   async asyncData({ params }) {
     const hotelId = params.hotel
     let hotelData = ''
@@ -71,9 +72,9 @@ export default {
       if (addressInfo) {
         return `
           ${addressInfo.lines[0]},
-          ${addressInfo.cityName} ,
-          ${addressInfo.stateCode}
-          ${addressInfo.countryCode}
+          ${addressInfo.cityName ? addressInfo.cityName : ''} ,
+          ${addressInfo.stateCode ? addressInfo.stateCode : ''}
+          ${addressInfo.countryCode ? addressInfo.countryCode : ''}
         `
       }
 
@@ -117,6 +118,17 @@ export default {
 
   &__amenities {
     display: inline-block;
+    max-width: 750px;
+    vertical-align: top;
+
+    span {
+      display: inline-block;
+      padding: 2px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      border-radius: 3px;
+      background-color: #cccccc;
+    }
   }
 }
 </style>

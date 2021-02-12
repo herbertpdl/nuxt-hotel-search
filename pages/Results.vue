@@ -1,5 +1,5 @@
 <template>
-  <div class="results">
+  <section class="results">
     <div class="container">
       <h3>{{ $t('results.title') }}</h3>
 
@@ -15,7 +15,7 @@
         </NuxtLink>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
