@@ -9,6 +9,7 @@
       :value="value"
       class="number-stepper__input"
       type="number"
+      :readonly="disableKeyboardEdition"
       @keyup="handleValue"
     />
     <span
@@ -34,6 +35,9 @@ export default {
     max: {
       type: Number,
       default: null,
+    },
+    disableKeyboardEdition: {
+      type: Boolean,
     },
   },
   methods: {

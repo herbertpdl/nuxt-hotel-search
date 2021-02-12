@@ -1,11 +1,23 @@
 <template>
   <div
-    id="dropdown"
+    :id="id"
     class="dropdown"
-    :class="{ isOpen: isOpen }"
+    :class="{ isOpen: isOpen, disabled: disabled }"
     @click="toggle"
   >
-    <span> {{ value || placeholder }} </span>
+    <span>
+      <template v-if="optionLabel">
+        {{ selectedValueLabel }}
+      </template>
+      <template v-else>
+        <slot v-if="value" name="value" :value="value">
+          {{ value }}
+        </slot>
+        <template v-else>
+          {{ placeholder }}
+        </template>
+      </template>
+    </span>
 
     <img
       src="../../assets/images/caret-down-solid.svg"
@@ -23,7 +35,7 @@
           @click="handleValue(option)"
         >
           <slot name="options" :option="option">
-            {{ option }}
+            {{ optionLabel ? option[optionLabel] : option }}
           </slot>
         </li>
       </ul>
@@ -37,7 +49,7 @@ export default {
   props: {
     placeholder: {
       type: String,
-      default: 'Select',
+      default: '',
     },
     value: {
       type: String,
@@ -47,10 +59,26 @@ export default {
       type: Array,
       default: () => [],
     },
+    disabled: {
+      type: Boolean,
+    },
+    optionValue: {
+      type: String,
+      default: null,
+    },
+    optionLabel: {
+      type: String,
+      default: null,
+    },
+    id: {
+      type: String,
+      default: 'dropdown-id',
+    },
   },
   data() {
     return {
       isOpen: false,
+      selectedValueLabel: null,
     }
   },
   mounted() {
@@ -61,7 +89,13 @@ export default {
   },
   methods: {
     handleValue(value) {
-      this.$emit('input', value)
+      if (this.optionValue) {
+        this.$emit('input', value[this.optionValue])
+
+        this.selectedValueLabel = value[this.optionLabel]
+      } else {
+        this.$emit('input', value)
+      }
     },
     toggle() {
       this.isOpen = !this.isOpen
@@ -70,7 +104,7 @@ export default {
       // Check if click ocurred outside this component
       if (
         this.isOpen &&
-        !(event.path && event.path.find((element) => element.id === 'dropdown'))
+        !(event.path && event.path.find((element) => element.id === this.id))
       ) {
         this.toggle()
       }
@@ -85,7 +119,7 @@ export default {
   height: 40px;
   border: 1px solid #092a5e;
   border-radius: 3px;
-  padding: 10px 16px;
+  padding: 8px 16px 10px 16px;
   color: #092a5e;
   font-size: 18px;
   font-weight: bold;
@@ -111,6 +145,13 @@ export default {
     }
   }
 
+  &.disabled {
+    color: #cccccc;
+    border-color: #cccccc;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
   &__arrow {
     position: absolute;
     right: 16px;
@@ -127,6 +168,7 @@ export default {
     padding: 0;
     background: #ffffff;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1;
 
     ul {
       position: relative;

@@ -57,6 +57,10 @@ export default {
 .home {
   padding: 24px 0;
 
+  h1 {
+    font-size: 48px;
+  }
+
   &__content {
     display: flex;
     justify-content: space-between;
