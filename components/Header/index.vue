@@ -133,14 +133,14 @@ export default {
         italy: [
           {
             code: 'FCO',
-            label: 'ROMA',
+            label: 'Roma',
           },
           {
             code: 'MXP',
             label: 'Varese',
           },
           {
-            code: 'GBY',
+            code: 'BGY',
             label: 'Bergamo',
           },
         ],
@@ -149,6 +149,7 @@ export default {
     }
   },
   computed: {
+    // Disable city dropdown while country is not selected
     disableCityDropdown() {
       if (!this.selectedCountry) {
         return true
@@ -156,6 +157,7 @@ export default {
 
       return false
     },
+    // Disable search button while city is not selected
     disableSearchButton() {
       if (!this.searchData.cityCode) {
         return true
@@ -165,12 +167,24 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(['setLoading', 'setHotelsList', 'setWeatherData']),
+    ...mapMutations([
+      'setLoading',
+      'setHotelsList',
+      'setWeatherData',
+      'setSearchData',
+    ]),
     findHotels() {
       this.setLoading(true)
       getHotelList(this.searchData).then((resp) => {
         this.setHotelsList(resp)
         this.setLoading(false)
+
+        this.setSearchData({
+          country: this.$t(`destinationOptions.${this.selectedCountry}`),
+          city: this.citiesbyCountry[this.selectedCountry].find(
+            (el) => el.code === this.searchData.cityCode
+          ).label,
+        })
 
         if (resp.length > 0) {
           // Get location key based on postal code
@@ -186,7 +200,7 @@ export default {
           })
         }
 
-        /* If is not in results page, redirect
+        /* If is not on results page, redirect.
           NOTE: This validation consider that exist only
           one route with "results" in it's path
         */

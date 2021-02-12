@@ -20,6 +20,8 @@ export default {
   },
   results: {
     title: 'Search Results',
+    pageTitle: 'Find hotels in {city}, {country}',
+    pageDescription: 'Check out the best hotel rooms in {city}, {country}',
   },
   hotelCard: {
     weather: 'Weather',

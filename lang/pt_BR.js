@@ -20,6 +20,9 @@ export default {
   },
   results: {
     title: 'Resultados da Busca',
+    pageTitle: 'Encontre hotéis em {city}, {country}',
+    pageDescription:
+      'Confira os melhores quartos de hotel hem {city}, {country}',
   },
   hotelCard: {
     weather: 'Clima',

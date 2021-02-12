@@ -36,8 +36,20 @@ export default {
     HotelCard,
     ResultsFilter,
   },
+  head() {
+    return {
+      title: this.$t('results.pageTitle', {
+        city: this.searchData.city,
+        country: this.searchData.country,
+      }),
+      description: this.$t('results.pageDescription', {
+        city: this.searchData.city,
+        country: this.searchData.country,
+      }),
+    }
+  },
   computed: {
-    ...mapGetters(['hotelsList', 'weatherData']),
+    ...mapGetters(['hotelsList', 'weatherData', 'searchData']),
   },
 }
 </script>

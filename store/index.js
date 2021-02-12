@@ -2,6 +2,10 @@ export const state = () => ({
   loading: false,
   hotelsList: [],
   weatherData: {},
+  searchData: {
+    country: null,
+    city: null,
+  },
 })
 
 export const getters = {
@@ -14,6 +18,9 @@ export const getters = {
   weatherData: (state) => {
     return state.weatherData
   },
+  searchData: (state) => {
+    return state.searchData
+  },
 }
 
 export const mutations = {
@@ -25,5 +32,8 @@ export const mutations = {
   },
   setWeatherData(state, value) {
     state.weatherData = value
+  },
+  setSearchData(state, value) {
+    state.searchData = { ...value }
   },
 }
