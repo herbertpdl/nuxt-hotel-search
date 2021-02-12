@@ -22,6 +22,7 @@ export default {
     title: 'Search Results',
     pageTitle: 'Find hotels in {city}, {country}',
     pageDescription: 'Check out the best hotel rooms in {city}, {country}',
+    orderBy: 'Order by:',
   },
   hotelCard: {
     weather: 'Weather',
@@ -35,7 +36,9 @@ export default {
     availableRooms: 'Available rooms',
   },
   resultsFilter: {
-    name: 'Name',
-    value: 'Value',
+    nameAsc: 'Name',
+    nameDesc: 'Name',
+    valueAsc: 'Value',
+    valueDesc: 'Value',
   },
 }

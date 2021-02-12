@@ -23,6 +23,7 @@ export default {
     pageTitle: 'Encontre hotéis em {city}, {country}',
     pageDescription:
       'Confira os melhores quartos de hotel hem {city}, {country}',
+    orderBy: 'Ordenar por:',
   },
   hotelCard: {
     weather: 'Clima',
@@ -36,7 +37,9 @@ export default {
     availableRooms: 'Quartos disponíveis',
   },
   resultsFilter: {
-    name: 'Nome',
-    value: 'Valor',
+    nameAsc: 'Nome',
+    nameDesc: 'Nome',
+    valueAsc: 'Valor',
+    valueDesc: 'Valor',
   },
 }
