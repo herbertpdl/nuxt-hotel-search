@@ -173,6 +173,7 @@ export default {
       'setWeatherData',
       'setSearchData',
     ]),
+    // TODO: Move it to a mixin to be reused
     findHotels() {
       this.setLoading(true)
       getHotelList(this.searchData).then((resp) => {

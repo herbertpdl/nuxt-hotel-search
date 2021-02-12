@@ -2,13 +2,13 @@ export default {
   welcome: 'Welcome!',
   destinationOptions: {
     portugal: 'Portugal',
-    portugalDescription: 'Check out the bests stays on Portugal',
+    portugalDescription: 'Check out the best stays in Portugal',
     spain: 'Spain',
-    spainDescription: 'Check out the bests stays on Spain',
+    spainDescription: 'Check out the best stays in Spain',
     italy: 'Italy',
-    italyDescription: 'Check out the bests stays on Italy',
+    italyDescription: 'Check out the best stays in Italy',
     brazil: 'Brazil',
-    brazilDescription: 'Check out the bests stays on Brazil',
+    brazilDescription: 'Check out the best stays in Brazil',
   },
   header: {
     cardTitle: 'Find your perfect stay!',

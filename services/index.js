@@ -7,7 +7,7 @@ const amadeus = new Amadeus({
   clientSecret: '4fFK7UEgKat8PNEX',
 })
 
-const accuweatherKey = '0aZZpopkXrnxwReeBYm0AW1116nhnvnG'
+const accuweatherKey = 'Mi0W1BJl9SQiYM0u8DFI8BSzmZtgKiRE'
 
 export const getHotelList = (data) =>
   amadeus.shopping.hotelOffers

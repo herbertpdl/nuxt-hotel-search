@@ -61,6 +61,9 @@ export default {
       this.orderedData = [...newValue]
     },
   },
+  mounted() {
+    this.orderedData = this.hotelsList
+  },
   methods: {
     orderData(value) {
       const list = [...this.hotelsList]
